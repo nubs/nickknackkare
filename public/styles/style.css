@@ -1,0 +1,14 @@
+body {
+  background-color: #f2e5bb;
+  color: #222;
+}
+
+.week-schedule li {
+  background-color: #99adc0;
+  border-color: #7993ac;
+}
+
+.week-schedule h3 {
+  text-align: center;
+  margin: 0;
+}

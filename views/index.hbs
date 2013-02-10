@@ -1,0 +1,29 @@
+<div class="row-fluid">
+  <div class="offset1">
+    <h2>This week</h2>
+    <ul class="week-schedule">
+      {{#each currentWeek}}
+        <li class="span2 well">
+          <div>
+            <h3>{{name}}</h3>
+            <ul class="events">
+              {{#each events}}
+                <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="offset1">
+    <h2>Other upcoming events</h2>
+    <ul class="events">
+      {{#each upcomingEvents}}
+        <li>{{event}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
