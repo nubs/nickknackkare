@@ -1,3 +1,4 @@
+_ = require 'underscore'
 express = require 'express'
 app = express()
 app.set 'view engine', 'hbs'
@@ -13,11 +14,14 @@ app.get '/scripts/mixpanel.js', (req, res) ->
   res.render 'scripts/mixpanel.js.hbs', mixpanelKey: process.env.MIXPANEL_KEY, layout: false
 
 app.get '/', (req, res) ->
-  CurrentWeek = require './models/current-week'
-  CurrentWeek.find().sort('order').exec (err, week) ->
-    UpcomingEvents = require './models/upcoming-events'
-    UpcomingEvents.find().sort('order').exec (err, upcomingEvents) ->
-      res.render 'index.hbs', currentWeek: week, upcomingEvents: upcomingEvents
+  Headers = require './models/headers'
+  Headers.find().exec (err, headers) ->
+    headers = _.object _.map headers, (header) -> [header.key, header.text]
+    CurrentWeek = require './models/current-week'
+    CurrentWeek.find().sort('order').exec (err, week) ->
+      UpcomingEvents = require './models/upcoming-events'
+      UpcomingEvents.find().sort('order').exec (err, upcomingEvents) ->
+        res.render 'index.hbs', headers: headers, currentWeek: week, upcomingEvents: upcomingEvents
 
 port = process.env.PORT ? 8000
 app.listen port, ->
