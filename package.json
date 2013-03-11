@@ -9,9 +9,9 @@
     "npm": "1.1.x"
   },
   "dependencies": {
-    "coffee-script": ">=1.4.0",
+    "coffee-script": ">=1.6.1",
     "express": ">=3.1.0",
-    "mongoose": ">=3.5.5",
-    "hbs": ">=2.0.1"
+    "mongoose": ">=3.5.7",
+    "hbs": ">=2.0.2"
   }
 }
